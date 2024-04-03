@@ -40,7 +40,7 @@ class FetchedPrediction extends Prediction {
       startedAt: json['started_at'] != null
           ? DateTime.parse(json['started_at'])
           : null,
-      metrics: json['metrics'],
+      metrics: json["metrics"] == null ? {} : json['metrics'],
       output: json['output'],
       status: PredictionStatus.fromResponseField(json['status']),
     );
