@@ -60,19 +60,15 @@ class Prediction {
       id: json['id'],
       version: json['version'],
       urls: PredictionUrls.fromJson(json['urls']),
-      createdAt: DateTime.parse(json['created_at']),
-      startedAt: json['started_at'] == null
-          ? null
-          : DateTime.parse(json['started_at']),
-      completedAt: json['completed_at'] == null
-          ? null
-          : DateTime.parse(json['completed_at']),
+      createdAt: json['created_at'] == null ? DateTime.now() : DateTime.parse(json['created_at']),
+      startedAt: json['started_at'] == null ? null : DateTime.parse(json['started_at']),
+      completedAt: json['completed_at'] == null ? null : DateTime.parse(json['completed_at']),
       status: _predictionStatus(json['status']),
       input: json['input'],
       output: json['output'],
       error: json['error'],
       logs: json['logs'],
-      metrics: PredictionMetrics.fromJson(json['metrics']),
+      metrics: json['metrics'] == null ? null : PredictionMetrics.fromJson(json['metrics']),
     );
   }
 
